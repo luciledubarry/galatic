@@ -1,5 +1,6 @@
 ---
 title: "Lucile_DUBARRY"
+author: Lucile DUBARRY
 format: html
 editor: visual
 ---
@@ -13,10 +14,14 @@ library(vroom)
 here::i_am("galatic.Rproj")
 ```
 
-
 ## Question 1
 
 I have created a data folder with the data sets, however I am sorry I have committed all the 4 data sets together. 
+
+## Question 2 - Link to Github
+
+We work on the Github project, available [here](https://github.com/luciledubarry/galatic.git).
+
 
 
 
