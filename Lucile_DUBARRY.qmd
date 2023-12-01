@@ -22,6 +22,41 @@ I have created a data folder with the data sets, however I am sorry I have commi
 
 We work on the Github project, available [here](https://github.com/luciledubarry/galatic.git).
 
+## Question 3
+
+```{r}
+#| message: false
+planet <- vroom(here("data-sets/planet%data.csv"), 
+            locale = locale(decimal_mark = "."), 
+            na = "unknown")
+```
+
+```{r}
+col <- planet |> ncol()
+row <- planet |> nrow()
+```
+```{r}
+col == 8
+row == 1003
+```
+This command displays TRUE if the dimensions of the planet data set matches the dimensions of the initial data (which are 1003 rows and 8 columns). 
+
+The data set contains `r nrow(planet)` planets and `r ncol(planet)` variables, which matches with the initial data set. 
+
+```{r}
+planet |> select(where(is.numeric))
+```
+
+The command above displays the numerical variables of the data set. The variables Planet_number, Star_key and density(earth) are recognized as numeric. 
+
+However, the variables MASS and relative radius are not recognized as numeric because of the unknown value (which indicates if the value is missing). We must change the unknown value into NA during the data loading. 
+I also change the decimal mark from a comma to a dot. 
+
+
+
+
+
+
 
 
 
