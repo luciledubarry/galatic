@@ -3,3 +3,14 @@ title: "Lucile_DUBARRY"
 format: html
 editor: visual
 ---
+
+```{r configuration}
+#| message: false
+library(dplyr)
+library(tidyr)
+library(here)
+library(vroom)
+here::i_am("galatic.Rproj")
+```
+
+
