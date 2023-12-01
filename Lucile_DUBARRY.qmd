@@ -62,15 +62,14 @@ var_missing_value <- sum(missing_values > 0)
 
 ```{r}
 missing_var <- colSums(is.na(planet))
-name(planet)[missing_var > 0]
+var <- names(planet)[missing_var > 0]
 ```
 
 ```{r}
 table_planet <- planet |>
-  summarise(row, col, var_missing_value)
-knitr::kable(table_planet, col.names = c("Number of observations","Number of variables", "Number of observations with at least one missing value"))
+  summarise(row, col, var_missing_value, var[1], var[2])
+knitr::kable(table_planet, col.names = c("Number of observations","Number of variables", "Number of observations with at least one missing value", "First variable with a missing value", "Second variable with missing value"))
 ```
-I did not manage to display the number of missing values for each variable with missing values. 
 
 ### Question 5
 
@@ -85,6 +84,18 @@ planet |> filter(!is.na(`relative radius`)) |>
   geom_jitter()
 ```
 
+### Question 6
+
+```{r}
+extreme_planet <- planet |>
+  summarise(min_density = min(`density (earth)`, na.rm=TRUE), 
+            max_density = max(`density (earth)`, na.rm=TRUE),
+            min_mass = min(MASS, na.rm=TRUE),
+            max_mass = max(MASS, na.rm=TRUE),
+            smallest_radius = min(`relative radius`, na.rm=TRUE),
+            biggest_radius = max(`relative radius`, na.rm=TRUE))
+knitr::kable(extreme_planet)
+```
 
 
 
