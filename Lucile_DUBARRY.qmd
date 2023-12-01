@@ -94,9 +94,30 @@ extreme_planet <- planet |>
             max_mass = max(MASS, na.rm=TRUE),
             smallest_radius = min(`relative radius`, na.rm=TRUE),
             biggest_radius = max(`relative radius`, na.rm=TRUE))
-knitr::kable(extreme_planet)
+knitr::kable(extreme_planet, caption = "Planets with extreme climate")
 ```
 
+## Improved data representation
+
+### Question 7
+
+```{r}
+library(stringr)
+```
+
+```{r}
+terrain_data <- planet |> 
+  reframe(terrain=str_split(`Terrain Type`, ","), .by=PLANET_NUMBER) |>
+  unnest(terrain)
+```
+
+The terrain_data data set contains the variable PLANET_NUMBER to identify the planet and another variable with the different terrain type associated with the planet. 
+
+```{r}
+climate_data <- planet |> 
+  reframe(climate=str_split(`Type_climate`, ","), .by=PLANET_NUMBER) |>
+  unnest(climate)
+```
 
 
 
