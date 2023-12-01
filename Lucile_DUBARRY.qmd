@@ -14,15 +14,17 @@ library(vroom)
 here::i_am("galatic.Rproj")
 ```
 
-## Question 1
+## Main data set import
 
-I have created a data folder with the data sets, however I am sorry I have committed all the 4 data sets together. 
+### Question 1
 
-## Question 2 - Link to Github
+I have created a data folder with the data sets, but I am sorry I have committed all the 4 data sets together. 
+
+### Question 2 - Link to Github
 
 We work on the Github project, available [here](https://github.com/luciledubarry/galatic.git).
 
-## Question 3
+### Question 3
 
 ```{r}
 #| message: false
@@ -51,6 +53,26 @@ The command above displays the numerical variables of the data set. The variable
 
 However, the variables MASS and relative radius are not recognized as numeric because of the unknown value (which indicates if the value is missing). We must change the unknown value into NA during the data loading. 
 I also change the decimal mark from a comma to a dot. 
+
+### Question 4
+```{r}
+missing_values <- rowSums(is.na(planet))
+var_missing_value <- sum(missing_values > 0)
+```
+
+```{r}
+table_planet <- planet |>
+  summarise(row, col, var_missing_value)
+knitr::kable(table_planet, col.names = c("Number of observations","Number of variables", "Number of observations with at least one missing value"))
+```
+I did not manage to display the number of missing values for each variable with missing values. 
+
+### Question 5
+
+
+
+
+
 
 
 
