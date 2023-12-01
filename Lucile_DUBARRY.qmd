@@ -14,3 +14,11 @@ here::i_am("galatic.Rproj")
 ```
 
 
+## Question 1
+
+I have created a data folder with the data sets, however I am sorry I have committed all the 4 data sets together. 
+
+
+
+
+
