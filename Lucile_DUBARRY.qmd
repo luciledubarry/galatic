@@ -81,7 +81,8 @@ library(ggplot2)
 ```{r}
 planet |> filter(!is.na(`relative radius`)) |>
   ggplot(aes(x = `relative radius`, y = `density (earth)`))  +
-  geom_jitter()
+  geom_jitter() + 
+  ggtitle("Density of the planet according to its radius")
 ```
 
 ### Question 6
@@ -102,6 +103,7 @@ knitr::kable(extreme_planet, caption = "Planets with extreme climate")
 ### Question 7
 
 ```{r}
+#| message: false
 library(stringr)
 ```
 
@@ -119,7 +121,19 @@ climate_data <- planet |>
   unnest(climate)
 ```
 
+### Question 8
 
+```{r}
+terrain_data |> 
+  group_by(PLANET_NUMBER) |>
+  summarise(n = n()) |>
+  group_by(n) |>
+  summarise(n2 = n())|>
+  ggplot(aes(x = n, y = n2)) +
+  geom_col() + 
+  labs(x = "Number of different climates", y = "Number of planets")
+  ggtitle("Distribution of the number of different terrains per planet")
+```
 
 
 
